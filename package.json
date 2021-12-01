@@ -19,6 +19,8 @@
   "homepage": "https://github.com/marycodes92/myautochek-test#readme",
   "dependencies": {
     "chai": "^4.3.4",
-    "cypress": "^3.8.3"
+    "cypress": "^3.8.3",
+    "mocha": "^9.1.3",
+    "proposal-temporal": "^0.9.0"
   }
 }

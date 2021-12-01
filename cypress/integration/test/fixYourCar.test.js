@@ -5,16 +5,16 @@
  * The it block is the individual test cases
  */
 
-import { should } from 'chai';
 import FixYourCar from '../pageObject/fixYourCarObject';
-import SignInPage from '../pageObject/signInPageObject';
+import LandingPage from '../pageObject/landingPageObject';
+
 
 describe('Fix Your Car Module', ()=>{
-    const signIn = new SignInPage();
+    const landing = new LandingPage();
     const fixUrCar = new FixYourCar();
 
     before('Launch the Autochek website', ()=>{
-        signIn.launchWebsite();
+        landing.launchWebsite();
         fixUrCar.visitFixYourCarPage();
     });
 
@@ -36,20 +36,20 @@ describe('Fix Your Car Module', ()=>{
             cy.contains('Our assurance').should('exist');
         });
     
-        // it('should fill the appointment form with pickup from my location option', ()=>{
-        //     fixUrCar.enterFirstName('Mary');
-        //     fixUrCar.enterPhoneNumber('7069774071');
-        //     fixUrCar.enterEmailAddress('onuorahmary@gmail.com');
-        //     fixUrCar.selectYourCar();
-        //     fixUrCar.pickUpLocation();
-        //     cy.get('.modal-header').should('exist');
-        //     fixUrCar.selectState();
-        //     fixUrCar.selectCity();
-        //     fixUrCar.enterStreet();
-        //     fixUrCar.enterDate();
-        //     fixUrCar.enterTime();
-        //     fixUrCar.confirm();
-        // });
+        it('should fill the appointment form with pickup from my location option', ()=>{
+            fixUrCar.enterFirstName('Mary');
+            fixUrCar.enterPhoneNumber('7069774071');
+            fixUrCar.enterEmailAddress('onuorahmary@gmail.com');
+            fixUrCar.selectYourCar();
+            fixUrCar.pickUpLocation();
+            cy.get('.modal-header').should('exist');
+            fixUrCar.selectState();
+            fixUrCar.selectCity();
+            fixUrCar.enterStreet();
+            fixUrCar.enterDate();
+            fixUrCar.enterTime();
+            fixUrCar.confirm();
+        });
     
         it('should fill the appointment form with drop off at Autochek location', ()=>{
             fixUrCar.enterFirstName('Oluchi');

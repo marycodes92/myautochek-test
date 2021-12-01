@@ -2,32 +2,22 @@
 
 /**
  * This file contains the SignInPage class
- * It returns all the methods used for the Sign in Page 
+ * It returns all the methods used on the Sign in test page and some other pages 
  * These methods are reusable
  */
 
 class SignInPage{
-    launchWebsite(){
-        cy.viewport(1280, 720);
-        cy.visit('/');
-    }
 
     visitSignInPage(){
         cy.contains('Sign In').click();
     }
 
     enterEmail(email){
-        const emailField = cy.get('.form-content > :nth-child(1) > div > .input');
-        // emailField.clear();
-        emailField.type(email);
-        return this;
+        cy.get('.form-content > :nth-child(1) > div > .input').type(email);
     }
 
     enterPassword(password){
-        const passwordField = cy.get(':nth-child(2) > div > .input');
-        // passwordField.clear();
-        passwordField.type(password);
-        return this;
+        cy.get(':nth-child(2) > div > .input').type(password);
     }
 
     rememberMe(){

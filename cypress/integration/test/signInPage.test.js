@@ -1,20 +1,21 @@
 ///<reference types = "cypress"/>
 
 /**
- * This file contains the tests for the Fix Your Car Page
+ * This file contains the tests for the Sign in Page
  * The describe block is like the suite that houses all the test cases
  * The before block runs once before all tests 
  * The it block is the individual test cases
  */
 
-
+import LandingPage from '../pageObject/landingPageObject';
 import SignInPage from '../pageObject/signInPageObject';
 
 describe('Sign in Functionality', () => {
+    const landing = new LandingPage();
     const signIn = new SignInPage();
 
     before('should launch Autochek website', () => {
-        signIn.launchWebsite();
+        landing.launchWebsite();
         cy.get('.logo > img').should('exist');
         cy.contains('Featured Cars').scrollIntoView().should('exist');
         signIn.visitSignInPage();
@@ -38,18 +39,21 @@ describe('Sign in Functionality', () => {
         cy.go('back');
     });
 
-    it('should sign in an unregistered user', () => {
+    it('should sign-in an unregistered user', () => {
         signIn.enterEmail('onuorahmary@gmail.com');
         signIn.enterPassword('12345678');
         signIn.rememberMe();
         signIn.submit();
         cy.get('#swal2-content').should('have.text','User not found. Please sign up');
         cy.get('.swal2-confirm').click();
-        cy.go('back');
     })
 
-    it('should sign in a registered user via google mail', ()=>{
+    it('should sign-in a user via google mail', ()=>{
         signIn.loginViaGoogle();
-        
-    })
+
+    });
+
+    it('should sign-in a user via facebook', ()=>{
+
+    });
 })
